@@ -3,7 +3,7 @@
         (c) K. Sinagire, 2021
 ***********************************/
 
-int initial = 0;
+int initial = 1;
 
 Simulator sim;
 PatternControl pat;
@@ -15,15 +15,16 @@ void settings(){
 void setup(){
   sim = new Simulator();
   pat = new PatternControl ();
-  pat.add(new Pattern("data/Poisson.data"));
-  pat.add(new Pattern("data/circle.data"));
-  pat.add(new Pattern("data/circle2.data"));
   pat.add(new Pattern("data/doubleSlit.data"));
   pat.add(new Pattern("data/Wslit.data"));
   pat.add(new Pattern("data/twoDS.data"));
   pat.add(new Pattern("data/DNA.data"));
   pat.add(new Pattern("data/DNA2.data"));
   pat.add(new Pattern("data/DNA3.data"));
+  pat.add(new Pattern("data/DNA4.data"));
+  pat.add(new Pattern("data/circle.data"));
+  pat.add(new Pattern("data/circle2.data"));
+
 }
 
 void draw() { 
@@ -33,7 +34,8 @@ void draw() {
   
   pat.getcur().show();
   
-  float scale   = pat.getcur().getScale();
+  
+  int iold = 0;
 
   switch (initial){
     case(0):
@@ -42,14 +44,18 @@ void draw() {
     // and shows the previous results
     // in the right panel to reflect the change
     // in the left panel quickly.
-      sim.show(pat.getcur().getIntensity());
+      float intensity = pat.get(iold).getIntensity();
+      sim.show(intensity);
       break;
     case(1):
     // Recalculate for the right panel.
+      iold = pat.getIndex();
       sim.scan();
+      float scale   = pat.getcur().getScale();
       float zoomout = pat.getcur().getZoomout();
       sim.calculate(scale, zoomout);
-      sim.show(pat.getcur().getIntensity());
+      intensity = pat.get(iold).getIntensity();
+      sim.show(intensity);
       noLoop();
       break;
     default:
@@ -57,7 +63,7 @@ void draw() {
   }
 
   initial++;
-  println(initial);
+  //println(initial);
 
   PFont font = createFont("Helvetica",30);
   textFont(font,20);
