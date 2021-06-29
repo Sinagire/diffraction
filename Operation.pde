@@ -50,6 +50,15 @@ class Operation{
             case "rr":
                 _rrect(float(temp [1]),float(temp [2]),radians(float(temp [3])), scale);
                 break;
+            case "img":
+                _putImage(temp[1], float(temp[2]), float(temp[3]), scale);
+                break;
+            case "img5":
+                _putImage(temp[1], float(temp[2]), float(temp[3]), float(temp[4]), float(temp[5]), scale);
+                break;
+            case "circ":
+                _circle(float(temp[1]), float(temp[2]), float(temp[3]), scale);
+                break;
             default:
                 println("undefined operation");
                 break;
@@ -64,6 +73,17 @@ class Operation{
 
     public boolean isValid(){
         return valid;
+    }
+
+    private void _circle(float x, float y, float r, float s){
+        PVector p, q;
+        float f;
+        p = _xy2screen(x*s, y*s);
+        //q = _xy2screen(r*s, r*s);
+        f = _convScalar(r*s);
+
+        circle (p.x, p.y, 2.0 * f);
+
     }
 
     private void _rrect(float x, float y, float theta, float s){
@@ -84,6 +104,18 @@ class Operation{
 
     private void _rrect(float x, float y, float theta){
         _rrect(x, y, theta, 1);
+    }
+
+    private void _putImage(String file, float x, float y, float s){
+        _putImage(file, x, y, 1, 1, s);
+    }
+
+    private void _putImage(String file, float x, float y, float sh, float sv, float s){
+        PVector p = _xy2screen(x*s,y*s);
+        PImage img;
+        img = loadImage(file);
+        img.resize(int(img.width*sh*s),int(img.height*sv*s));
+        image(img, p.x-img.width/2, p.y-img.height/2);
     }
 
     void _rotateOrigin(float x){
@@ -121,7 +153,7 @@ class Operation{
     }
 
     private String[] args;
-    private final String[] regOpt   ={"rr", "f1", "f3"};
-    private final int[]    regArgNum={   3,    1,    3};
+    private final String[] regOpt   ={"rr", "f1", "f3", "img", "img5", "circ"};
+    private final int[]    regArgNum={   3,    1,    3,     3,      5,      3};
     private boolean valid;
 }

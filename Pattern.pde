@@ -5,13 +5,15 @@ public class Pattern{
         opts = new ArrayList<Operation> ();
         vars = new ArrayList<Variable>  ();
         scale = 1.0;
+        intensity = 100;
+        zoomout = 1.0;
         String[] lines = loadStrings(file);
 
         boolean vflag = false;
         boolean hflag = false;
         for (int i = 0; i < lines.length; i++){
             String[] temp = splitTokens(lines[i]);
-            if (match(temp[0],"^#") != null) {continue;}
+            if (temp.length == 0 || match(temp[0],"^#") != null) {continue;}
             Operation o = new Operation(lines[i]);
             if (o.isValid()) {opts.add(o);}
             // register as a Variable
@@ -26,6 +28,12 @@ public class Pattern{
                     if (temp[0].equals("scale") && temp.length >= 2){
                         scale = float (temp[1]);
                     }
+                    if (temp[0].equals("intensity") && temp.length >= 2){
+                        intensity = float (temp[1]);
+                    }
+                    if (temp[0].equals("zoomout") && temp.length >= 2){
+                        zoomout = float (temp[1]);
+                    }
                 }
             }
         }
@@ -38,6 +46,8 @@ public class Pattern{
     public Pattern(){
         s="";
         scale = 1.0;
+        intensity = 100;
+        zoomout = 1.0;
         opts = new ArrayList<Operation> ();
         opts.add(new Operation("rr 0 -0.4 15"));
     }
@@ -56,6 +66,14 @@ public class Pattern{
 
     public float getScale(){
         return scale;
+    }
+
+    public float getIntensity(){
+        return intensity;
+    }
+
+    public float getZoomout(){
+        return zoomout;
     }
 
     public void step (int i){
@@ -83,4 +101,6 @@ public class Pattern{
     private ArrayList<Variable>  vars;
     private String s;
     private float scale;
+    private float intensity;
+    private float zoomout;
 }

@@ -1,0 +1,5 @@
+intensity 100000
+zoomout    3
+f1  255
+v1  0.05 0.01
+circ    0       0         v1

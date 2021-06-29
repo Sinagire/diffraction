@@ -21,11 +21,14 @@ public class Simulator{
         }
     }
     public void calculate(float scale){
+        calculate(scale, 1);
+    }
+    public void calculate(float scale, float zoom){
         float re[][] = new float[Nx+1][Ny+1];
         float im[][] = new float[Nx+1][Ny+1];
 
         // Fourier transform
-        float alpha = 1.7/scale*min(Nx,Ny)*.25;
+        float alpha = 1.7/scale*min(Nx,Ny)*.25*zoom; //3 is a zoom parameter
         for (int ki=0; ki<=Nx; ki++){
         float kx = (ki*2.0/Nx - 1.0)*alpha;
             for (int kj=0; kj<=Ny; kj++){
@@ -51,6 +54,9 @@ public class Simulator{
         calculate(1.0);
     }
     public void show(){
+        show(100);
+    }
+    public void show(float intensity){
         float dx = 2.0/Nx;
         float dy = 2.0/Ny;
         fill(255);
@@ -61,7 +67,7 @@ public class Simulator{
                 float y = j*2.0/Ny - 1.0;
                 PVector p = _xy2screen(x,y);
                 //color c = color((re[i][j]*re[i][j]+im[i][j]*im[i][j])/Nx/Ny*70);
-                color c = color((spectrum[i][j])/Nx/Ny*100);
+                color c = color((spectrum[i][j])/Nx/Ny*intensity);
                 c = color(255-brightness(c));
                 //color c = color(value[i][j]*255);
                 stroke(c);

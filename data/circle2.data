@@ -1,0 +1,37 @@
+intensity 1000
+zoomout    3
+f1  255
+v1  0.05 0.01
+circ    0       0         v1
+circ     0.91     0.48    v1
+circ     0.56    -0.25    v1
+circ     0.34    -0.78    v1
+circ    -0.35    -0.55    v1
+circ    -0.23    -0.42    v1
+circ    -0.23    -0.85    v1
+circ    -0.99    -0.20    v1
+circ    -0.77    -0.58    v1
+circ    -0.11    -0.12    v1
+circ    -0.29    -0.81    v1
+circ    -0.76    -0.59    v1
+circ     0.83    -0.15    v1
+circ     0.88    -0.29    v1
+circ     0.66     0.26    v1
+circ    -0.72     0.05    v1
+circ    -0.03    -0.28    v1
+circ     0.71    -0.39    v1
+circ     0.88     0.47    v1
+circ     0.51     0.99    v1
+circ     0.73    -0.72    v1
+circ     0.17     0.73    v1
+circ    -0.58    -0.48    v1
+circ    -0.82    -0.86    v1
+circ    -0.32     0.58    v1
+circ    -0.93    -0.34    v1
+circ    -0.51     0.14    v1
+circ    -0.60    -0.48    v1
+circ    -0.28     0.73    v1
+circ     0.52    -0.44    v1
+circ    -0.65     0.78    v1
+circ    -0.87     0.96    v1
+circ     0.62     0.67    v1
