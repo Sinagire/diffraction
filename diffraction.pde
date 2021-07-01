@@ -15,9 +15,10 @@ void settings(){
 void setup(){
   sim = new Simulator();
   pat = new PatternControl ();
-  String[] lines = loadStrings("datalist.txt");
+  final String file = "data/datalist.txt";
+  String[] lines = loadStrings(file);
   if (lines == null){
-    javax.swing.JOptionPane.showMessageDialog(null, "Could not open \" datalist.txt \".");
+    javax.swing.JOptionPane.showMessageDialog(null, "Could not open \"" + file + "\".");
     exit();
   }
   for (int i = 0; i < lines.length; i++){

@@ -114,6 +114,10 @@ class Operation{
         PVector p = _xy2screen(x*s,y*s);
         PImage img;
         img = loadImage(file);
+        if (img == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Could not open \"" + file + "\".");
+            return;
+        }
         img.resize(int(img.width*sh*s),int(img.height*sv*s));
         image(img, p.x-img.width/2, p.y-img.height/2);
     }
