@@ -7,10 +7,20 @@ public class Pattern{
         scale = 1.0;
         intensity = 100;
         zoomout = 1.0;
-        String[] lines = loadStrings(file);
-
+        s = ""; 
+        valid = true;
         boolean vflag = false;
         boolean hflag = false;
+
+        String[] lines = loadStrings(file);
+        if (lines == null){
+            println(file);
+            javax.swing.JOptionPane.showMessageDialog(null, "Could not open \"" + file + "\".");
+            valid = false;
+            return;
+        }
+
+
         for (int i = 0; i < lines.length; i++){
             String[] temp = splitTokens(lines[i]);
             if (temp.length == 0 || match(temp[0],"^#") != null) {continue;}
@@ -37,7 +47,6 @@ public class Pattern{
                 }
             }
         }
-        s = ""; 
         if (vflag || hflag) {s += "Control: ";}
         if (hflag) {s += "←→";}
         if (vflag) {s += "↑↓";}
@@ -97,10 +106,15 @@ public class Pattern{
         }
     }
 
+    public boolean isValid(){
+        return valid;
+    }
+
     private ArrayList<Operation> opts;
     private ArrayList<Variable>  vars;
     private String s;
     private float scale;
     private float intensity;
     private float zoomout;
+    private boolean valid;
 }

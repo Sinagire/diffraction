@@ -15,16 +15,15 @@ void settings(){
 void setup(){
   sim = new Simulator();
   pat = new PatternControl ();
-  pat.add(new Pattern("data/doubleSlit.data"));
-  pat.add(new Pattern("data/Wslit.data"));
-  pat.add(new Pattern("data/twoDS.data"));
-  pat.add(new Pattern("data/DNA.data"));
-  pat.add(new Pattern("data/DNA2.data"));
-  pat.add(new Pattern("data/DNA3.data"));
-  pat.add(new Pattern("data/DNA4.data"));
-  pat.add(new Pattern("data/circle.data"));
-  pat.add(new Pattern("data/circle2.data"));
-
+  String[] lines = loadStrings("datalist.txt");
+  if (lines == null){
+    javax.swing.JOptionPane.showMessageDialog(null, "Could not open \" datalist.txt \".");
+    exit();
+  }
+  for (int i = 0; i < lines.length; i++){
+      Pattern p = new Pattern(lines[i]);
+      if (p.isValid()) {pat.add(p);}
+  }
 }
 
 void draw() { 
