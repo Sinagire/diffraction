@@ -88,8 +88,8 @@ public class Simulator{
         -1 <= y <= 1  --> 0 <= p.y <= height
         */
         float s = min (width/2.0, height);
-        p.x = x * s / 2.0 + width  / 4.0;
-        p.y = y * s / 2.0 + height / 2.0;
+        p.x =   x * s / 2.0 + width  / 4.0;
+        p.y = - y * s / 2.0 + height / 2.0;
   
         return p;
     }

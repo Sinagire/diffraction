@@ -1,7 +1,7 @@
 #  Sinusoidal slits
 scale 1.0
 intensity 120
-v1  -0.2   -0.1
+v1  0.2  0.1
 h1  1.0   0.1
-img5 data/img/sin.png     0   0.1    h1  1
+img5 data/img/sin.png     0  -0.1    h1  1
 img5 data/img/sin2.png    0   v1     h1  1
