@@ -1,6 +1,8 @@
 Syntax for data files
 =====================
 
+[syntax.ja.md in 日本語](syntax.ja.md) is also available.
+
 Coordinates
 -----------
 

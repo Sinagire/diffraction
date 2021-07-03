@@ -22,7 +22,7 @@ Click the left button to move on to the next pattern, the right button to go bac
 
 Note
 ====
-You can make your own scatter patterns by writing a data file and register it into data/datalist.txt. Refer to syntax.md for the syntax.
+You can make your own scatter patterns by writing a data file and register it into data/datalist.txt. Refer to [syntax.md](syntax.md) for the syntax.
 
 This program comes with absolutely no warranty.
 

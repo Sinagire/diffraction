@@ -1,6 +1,8 @@
 データファイルの文法
 =====================
 
+[syntax.md in English](syntax.md) is also available.
+
 座標
 ----
 
