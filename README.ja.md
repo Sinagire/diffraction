@@ -11,7 +11,7 @@ Diffraction Simulator は 2次元回折シミュレーターです。（もっ�
 
 使い方
 ======
-diffraction.zip を diffraction フォルダに展開後、Processing で diffraction.pde を開き、実行して下さい。
+[diffraction.zip](diffraction.zip) を ダウンロード後、diffraction フォルダに展開し、Processing で diffraction.pde を開き、実行して下さい。
 
 左側のパネルには散乱体のパターンが表示されます（プログラムは輝度だけを読み取りますので色相は関係ありません）。右側のパネルには2次元フーリエ変換によって計算された、フラウンホーファー回折のパターンが表示されます。
 

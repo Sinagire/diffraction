@@ -11,7 +11,7 @@ This program works with [Processing](https://processing.org).
 
 Usage
 =====
-Download diffraction.zip and expand it to a folder named "diffraction". Open diffraction.pde with Processing and run.
+Download [diffraction.zip](diffraction.zip) and expand it to a folder named "diffraction". Open diffraction.pde with Processing and run.
 
 The left panel shows the scatter pattern (the program reads
 only the brightness of the pattern). The right panel shows 
