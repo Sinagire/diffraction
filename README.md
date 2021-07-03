@@ -3,6 +3,8 @@ Diffraction Simulator
 
 Diffraction Simulator is a two dimensional diffraction simulator.
 
+[README in 日本語](README.ja.md)
+
 Requirements
 ============
 This program works with [Processing](https://processing.org).

@@ -3,6 +3,8 @@ Diffraction Simulator
 
 Diffraction Simulator は 2次元回折シミュレーターです。（もっと良い名前考えなきゃ）
 
+[README in English](README.md)
+
 動作環境
 ========
 [Processing](https://processing.org) が必要です。
@@ -15,13 +17,13 @@ diffraction.zip を diffraction フォルダに展開後、Processing で diffra
 
 左クリックで次のパターンを表示し、右クリックで前のパターンに踊ります。矢印キーを使ってパターンを制御できる場合には、"Control:↑↓←→"などの表示によって示されます。
 
-Note
+注意
 ====
 データファイルを作成することで、オリジナルの散乱体パターンを作成することが可能です。データファイルの文法についてはsyntax.ja.mdをご覧下さい。またデータファイルは data/datalist.txt に登録する必要があります。
 
 またこのプログラムを利用したことによるいかなる損害も補償いたしません。ご了承ください。
 
-Author
+作成者
 ======
 Sinagire (sinagire.k@gmail.com)
 
