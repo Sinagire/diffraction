@@ -7,6 +7,7 @@ int initial = 1;
 
 Simulator sim;
 PatternControl pat;
+Screen scr;
 
 void settings(){
   size(640, 320);
@@ -15,6 +16,7 @@ void settings(){
 void setup(){
   sim = new Simulator();
   pat = new PatternControl ();
+  scr = new Screen();
   final String file = "data/datalist.txt";
   String[] lines = loadStrings(file);
   if (lines == null){
@@ -32,7 +34,7 @@ void draw() {
   stroke(255);
   fill(255);
   
-  pat.getcur().show();
+  pat.getcur().show(scr);
   
   
   int iold = 0;
@@ -45,17 +47,17 @@ void draw() {
     // in the right panel to reflect the change
     // in the left panel quickly.
       float intensity = pat.get(iold).getIntensity();
-      sim.show(intensity);
+      sim.show(intensity, scr);
       break;
     case(1):
     // Recalculate for the right panel.
       iold = pat.getIndex();
-      sim.scan();
+      sim.scan(scr);
       float scale   = pat.getcur().getScale();
       float zoomout = pat.getcur().getZoomout();
       sim.calculate(scale, zoomout);
       intensity = pat.get(iold).getIntensity();
-      sim.show(intensity);
+      sim.show(intensity,scr);
       noLoop();
       break;
     default:

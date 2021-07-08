@@ -61,11 +61,11 @@ public class Pattern{
         opts.add(new Operation("rr 0 -0.4 15"));
     }
 
-    public void show(){
+    public void show(Screen scr){
         ListIterator<Operation> i = opts.listIterator();
         while (i.hasNext()){
             Operation o = i.next();
-            o.operate(vars, scale);
+            o.operate(vars, scale, scr);
         }
     }
 

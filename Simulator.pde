@@ -9,12 +9,12 @@ public class Simulator{
     public Simulator(){
         this(100,100);
     }
-    public void scan(){
+    public void scan(Screen scr){
         for (int i=0; i<=Nx; i++){
             for (int j=0; j<=Ny; j++){
                 float x = i*2.0/Nx - 1.0;
                 float y = j*2.0/Ny - 1.0;
-                PVector p = _xy2screen(x,y);
+                PVector p = scr.xy2screen(x,y);
                 color c = get(int(p.x),int(p.y));
                 value[i][j]=brightness(c)/255;
             }
@@ -54,10 +54,10 @@ public class Simulator{
     public void calculate(){
         calculate(1.0);
     }
-    public void show(){
-        show(100);
+    public void show(Screen scr){
+        show(100, scr);
     }
-    public void show(float intensity){
+    public void show(float intensity, Screen s){
         float dx = 2.0/Nx;
         float dy = 2.0/Ny;
         fill(255);
@@ -66,39 +66,18 @@ public class Simulator{
                 for (int j=0; j<=Ny; j++){
                 float x = i*2.0/Nx - 1.0;
                 float y = j*2.0/Ny - 1.0;
-                PVector p = _xy2screen(x,y);
+                PVector p = scr.xy2screen(x,y);
                 //color c = color((re[i][j]*re[i][j]+im[i][j]*im[i][j])/Nx/Ny*70);
                 color c = color((spectrum[i][j])/Nx/Ny*intensity);
                 c = color(255-brightness(c));
                 //color c = color(value[i][j]*255);
                 stroke(c);
                 fill(c);
-                rect(p.x+width/2.0,p.y,_convScalar(dx),_convScalar(dy));
+                rect(p.x+width/2.0,p.y,scr.convScalar(dx),scr.convScalar(dy));
             }
         }
         stroke(255);
         line(width/2,0,width/2,height);
-    }
-
-    private PVector _xy2screen(float x,float y){
-  
-        PVector p = new PVector();
-        /*
-        s = max (width/2.0, height);
-        -1 <= x <= 1  --> 0 <= p.x <= width/2.0 
-        -1 <= y <= 1  --> 0 <= p.y <= height
-        */
-        float s = min (width/2.0, height);
-        p.x =   x * s / 2.0 + width  / 4.0;
-        p.y = - y * s / 2.0 + height / 2.0;
-  
-        return p;
-    }
-
-    private float _convScalar(float x){
-        float s = min (width/2.0, height);
-        float r = x * s / 2.0;
-        return r;
     }
 
     private float value[][];

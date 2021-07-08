@@ -22,7 +22,7 @@ class Operation{
         }
     }
 
-    public void operate(ArrayList<Variable> a, float scale){
+    public void operate(ArrayList<Variable> a, float scale, Screen scr){
         String[] temp;
         temp = Arrays.copyOf(args,args.length);
         if (a != null){
@@ -48,70 +48,67 @@ class Operation{
                 fill(float(temp[1]),float(temp [2]),float(temp [3]));
                 break;
             case "rr":
-                _rrect(float(temp [1]),float(temp [2]),radians(float(temp [3])), scale);
+                _rrect(float(temp [1]),float(temp [2]),radians(float(temp [3])), scale, scr);
                 break;
             case "img":
-                _putImage(temp[1], float(temp[2]), float(temp[3]), scale);
+                _putImage(temp[1], float(temp[2]), float(temp[3]), scale, scr);
                 break;
             case "img5":
-                _putImage(temp[1], float(temp[2]), float(temp[3]), float(temp[4]), float(temp[5]), scale);
+                _putImage(temp[1], float(temp[2]), float(temp[3]), float(temp[4]), float(temp[5]), scale, scr);
                 break;
             case "circ":
-                _circle(float(temp[1]), float(temp[2]), float(temp[3]), scale);
+                _circle(float(temp[1]), float(temp[2]), float(temp[3]), scale, scr);
                 break;
             default:
                 println("undefined operation");
                 break;
         }
     }
-    public void operate(ArrayList<Variable> a){
-        operate(a,1.0);
+    public void operate(ArrayList<Variable> a, Screen scr){
+        operate(a, 1.0, scr);
     }
-    public void operate(){
-        operate(null);
+    public void operate(Screen scr){
+        operate(null,scr);
     }
 
     public boolean isValid(){
         return valid;
     }
 
-    private void _circle(float x, float y, float r, float s){
+    private void _circle(float x, float y, float r, float s, Screen scr){
         PVector p, q;
         float f;
-        p = _xy2screen(x*s, y*s);
-        //q = _xy2screen(r*s, r*s);
-        f = _convScalar(r*s);
+        p = scr.xy2screen(x*s, y*s);
+        f = scr.convScalar(r*s);
 
         circle (p.x, p.y, 2.0 * f);
 
     }
 
-    private void _rrect(float x, float y, float theta, float s){
-        float w=_convScalar(0.8)*s;
-        float h=_convScalar(0.05);
+    private void _rrect(float x, float y, float theta, float s, Screen scr){
+        float w=scr.convScalar(0.8)*s;
+        float h=scr.convScalar(0.05);
   
         PVector p, q;
   
-        p = _xy2screen(x*s,y*s);
-        q = _xy2screen(w,h);
+        p = scr.xy2screen(x*s,y*s);
+        q = scr.xy2screen(w,h);
   
-        //rotateOrigin(theta);
         _rotateXY(p,theta);
         rect(p.x-w/2.0,p.y-h/2.0,w,h);
-        //rotateOrigin(-theta);
         _rotateXY(p,-theta);
     }
 
-    private void _rrect(float x, float y, float theta){
-        _rrect(x, y, theta, 1);
+    private void _rrect(float x, float y, float theta, Screen scr){
+        _rrect(x, y, theta, 1, scr);
     }
 
-    private void _putImage(String file, float x, float y, float s){
-        _putImage(file, x, y, 1, 1, s);
+    private void _putImage(String file, float x, float y, float s, Screen scr){
+        _putImage(file, x, y, 1, 1, s, scr);
     }
 
-    private void _putImage(String file, float x, float y, float sh, float sv, float s){
-        PVector p = _xy2screen(x*s,y*s);
+    private void _putImage(String file, float x, float y, float sh, float sv, float s, Screen scr){
+        PVector p = scr.xy2screen(x*s,y*s);
         PImage img;
         img = loadImage(file);
         if (img == null) {
@@ -122,38 +119,12 @@ class Operation{
         image(img, p.x-img.width/2, p.y-img.height/2);
     }
 
-    void _rotateOrigin(float x){
-        PVector p = new PVector(0,0);
-        _rotateXY(p,x);
-    }
-
     void _rotateXY(PVector p, float x){
         PVector q;
         q = p;
-        //q = xy2screen(p.x,p.y);
         translate(q.x, q.y);
         rotate(x);
         translate(-q.x, -q.y);
-    }
-    PVector _xy2screen(float x,float y){
-  
-        PVector p = new PVector();
-        /*
-        s = max (width/2.0, height);
-        -1 <= x <= 1  --> 0 <= p.x <= width/2.0 
-        -1 <= y <= 1  --> 0 <= p.y <= height
-        */
-        float s = min (width/2.0, height);
-        p.x =   x * s / 2.0 + width  / 4.0;
-        p.y = - y * s / 2.0 + height / 2.0;
-  
-        return p;
-    }
-
-    float _convScalar(float x){
-        float s = min (width/2.0, height);
-        float r = x * s / 2.0;
-        return r;
     }
 
     private String[] args;
