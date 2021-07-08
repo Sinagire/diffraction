@@ -21,14 +21,15 @@ public class Simulator{
         }
     }
     public void calculate(float scale){
-        calculate(scale, 1);
+        calculate(scale, 1.1);
     }
     public void calculate(float scale, float zoom){
         float re[][] = new float[Nx+1][Ny+1];
         float im[][] = new float[Nx+1][Ny+1];
 
         // Fourier transform
-        float alpha = 1.7/scale*min(Nx,Ny)*.25*zoom; //3 is a zoom parameter
+        float alpha = PI/2/scale*min(Nx,Ny)*0.25*zoom;
+        //float alpha = 1.7/scale*min(Nx,Ny)*.25*zoom;
         for (int ki=0; ki<=Nx; ki++){
         float kx = (ki*2.0/Nx - 1.0)*alpha;
             for (int kj=0; kj<=Ny; kj++){

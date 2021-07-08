@@ -6,7 +6,7 @@ public class Pattern{
         vars = new ArrayList<Variable>  ();
         scale = 1.0;
         intensity = 100;
-        zoomout = 1.0;
+        zoomout = 1.1;
         s = ""; 
         valid = true;
         boolean vflag = false;
@@ -56,7 +56,7 @@ public class Pattern{
         s="";
         scale = 1.0;
         intensity = 100;
-        zoomout = 1.0;
+        zoomout = 1.1;
         opts = new ArrayList<Operation> ();
         opts.add(new Operation("rr 0 -0.4 15"));
     }

@@ -11,10 +11,8 @@ The horizontal coordinate (x) and the vertical coordinate (y) indicate a point i
 
 In the right panel, the reciprocal coordinates (kx, ky) 
 corresponds to (x, y). The range is set to
--0.425 N z <= kx, ky < 0.425 N z, where z is a zoom-out factor
-(whose default value is 1) and N is a one-dimensional resolution for the left panel (N = 100 by default). The magic number does not have 
-much meaning. I chose it as a number reasonably smaller
-than 0.5.
+-0.125 PI N z <= kx, ky < 0.125 PI N z, where z is a zoom-out factor
+(whose default value is 1.1), N is a one-dimensional resolution for the left panel (N = 100 by default), PI is the pi constant.
 
 
 Configuration
