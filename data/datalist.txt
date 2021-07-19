@@ -7,3 +7,6 @@ data/DNA3.data
 data/DNA4.data
 data/circle.data
 data/circle2.data
+data/holes.data
+data/holes2.data
+data/rect.data

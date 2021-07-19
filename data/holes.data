@@ -1,0 +1,26 @@
+# holes
+zoomout 1.2
+h1  0.05 0.01
+circ     0.250  -0.700  h1
+circ     0.202  -0.630  h1
+circ     0.077  -0.560  h1
+circ     -0.077  -0.490  h1
+circ     -0.202  -0.420  h1
+circ     -0.250  -0.350  h1
+circ     -0.202  -0.280  h1
+circ     -0.077  -0.210  h1
+circ     0.077  -0.140  h1
+circ     0.202  -0.070  h1
+circ     0.250  0.000  h1
+circ     0.202  0.070  h1
+circ     0.077  0.140  h1
+circ     -0.077  0.210  h1
+circ     -0.202  0.280  h1
+circ     -0.250  0.350  h1
+circ     -0.202  0.420  h1
+circ     -0.077  0.490  h1
+circ     0.077  0.560  h1
+circ     0.202  0.630  h1
+circ     0.250  0.700  h1
+#for i in [(math.cos(x/5.0*math.pi)*.25,x/5.0*.7) for x in [y - 10 for y in range(21)]]:
+#...     print "circ     {:.3f}  {:.3f}  v1".format(i[0],i[1])

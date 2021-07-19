@@ -50,6 +50,10 @@ class Operation{
             case "rr":
                 _rrect(float(temp [1]),float(temp [2]),radians(float(temp [3])), scale, scr);
                 break;
+            case "rect5":
+                _rect(float(temp [1]),float(temp [2]),float(temp [3]),
+                      float(temp [4]), radians(float(temp [5])), scale, scr);
+                break;
             case "img":
                 _putImage(temp[1], float(temp[2]), float(temp[3]), scale, scr);
                 break;
@@ -84,10 +88,23 @@ class Operation{
         circle (p.x, p.y, 2.0 * f);
 
     }
-
     private void _rrect(float x, float y, float theta, float s, Screen scr){
         float w=scr.convScalar(0.8)*s;
         float h=scr.convScalar(0.05);
+  
+        PVector p, q;
+  
+        p = scr.xy2screen(x*s,y*s);
+        q = scr.xy2screen(w,h);
+  
+        _rotateXY(p,theta);
+        rect(p.x-w/2.0,p.y-h/2.0,w,h);
+        _rotateXY(p,-theta);
+    }
+
+    private void _rect(float x, float y, float ww, float hh, float theta, float s, Screen scr){
+        float w=scr.convScalar(ww)*s;
+        float h=scr.convScalar(hh);
   
         PVector p, q;
   
@@ -128,7 +145,7 @@ class Operation{
     }
 
     private String[] args;
-    private final String[] regOpt   ={"rr", "f1", "f3", "img", "img5", "circ"};
-    private final int[]    regArgNum={   3,    1,    3,     3,      5,      3};
+    private final String[] regOpt   ={"rr", "f1", "f3", "img", "img5", "circ", "rect5"};
+    private final int[]    regArgNum={   3,    1,    3,     3,      5,      3,       5};
     private boolean valid;
 }

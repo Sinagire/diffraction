@@ -1,0 +1,4 @@
+# double-slit
+v1  0.15 0.05
+h1  0.8 0.1
+rect5      0    0   h1     v1    0
