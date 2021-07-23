@@ -32,6 +32,7 @@ Patterns
 * `f1 g` sets a grayscale color indicated by g (0: black, 255: white) for the following elements. 
 * `f3 r g b` sets a color indicated by RGB for the following elements.
 * `rr x y angle` puts a slit so that its center is on (x, y) in the left panel with a rotation of angle.
+* `rect5 x y width hight angle` puts a rectangle of a designated width and hight so that its center is on (x, y) in the left panel with a rotation of angle.
 * `circ x y r` puts a circle whose radius is r so that its center is on (x, y).
 * `img5 filename x y s1 s2` puts an image indicated by filename (.gif, .jpg, .tga, .png) so that its center is on (x, y). The image is elongated along x by the factor of s1, and along y by s2.
 * `img filename x y` puts an image without elongation. This is identical to `img5 filename x y 1 1`.
